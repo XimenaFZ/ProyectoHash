@@ -35,4 +35,35 @@ public class HASH {
             javax.swing.JOptionPane.showMessageDialog(null, "¡Tabla llena!");
         }
     }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static int consultarPersona(HASH[] h, int m, int n) {
+        int j = funcion(n, m);
+        while (j < m) {
+            if (h[j].estado == 0) {
+                return -1;
+            } else if (h[j].nc == n) {
+                if (h[j].estado == 1) {
+                    return -1;
+                } else {
+                    return j;
+                }
+            } else {
+                j++;
+            }
+        }
+        return -1;
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static int eliminarPersona(HASH[] h, int m, int n) {
+        int i = consultarPersona(h, m, n);
+        if (i == -1) {
+            return -1;
+        } else {
+            h[i].estado = 1;
+            return 1;
+            
+        }
+    }
 }
